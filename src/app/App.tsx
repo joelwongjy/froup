@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
@@ -17,7 +17,7 @@ function HomeScreen() {
       dispatch(fetchAllModules());
     };
 
-    fetchModules().catch(console.error);
+    fetchModules().catch();
   }, [dispatch]);
 
   return (

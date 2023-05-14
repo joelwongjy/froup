@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAllModulesSummary } from 'services/modules';
 
-import { Module } from 'types/module';
+import { Module } from 'types/modules';
 
 export const fetchAllModules = createAsyncThunk(
   'modules/fetchAlModules',

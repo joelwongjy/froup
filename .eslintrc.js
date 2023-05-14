@@ -132,6 +132,7 @@ module.exports = {
     // ===================== //
     // react and react-hooks //
     // ===================== //
+    'react/react-in-jsx-scope': 'off',
     'react/jsx-boolean-value': ['error', 'always'],
     'react/jsx-sort-props': 'error',
     // Checks effect dependencies

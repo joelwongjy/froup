@@ -1,7 +1,8 @@
 import axios from 'axios';
+import config from 'config';
 
 const api = axios.create({
-  baseURL: 'https://api.nusmods.com/v2',
+  baseURL: config.apiBaseUrl,
   headers: { 'Content-Type': 'application/json' },
 });
 
