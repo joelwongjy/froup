@@ -1,5 +1,5 @@
 export interface Module {
-    moduleCode: string;
-    title: string;
-    semesters: number[];
+  moduleCode: string;
+  title: string;
+  semesters: number[];
 }
