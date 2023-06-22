@@ -1,5 +1,10 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 
+interface Props {
+  title: string;
+  moduleCode: string;
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -14,8 +19,8 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   title: {
-    fontSize: 16,
-    color: '#000',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   container_text: {
     flex: 1,
@@ -24,8 +29,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   description: {
-    fontSize: 11,
-    fontStyle: 'italic',
+    fontSize: 16,
+    paddingTop: 5,
   },
   photo: {
     height: 50,
@@ -33,10 +38,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ModuleListRow({ title, moduleCode, image_url }) {
+export default function ModuleListRow({ title, moduleCode }: Props) {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: image_url }} style={styles.photo} />
+      {/* <Image source={{ uri: image_url }} style={styles.photo} /> */}
       <View>
         <Text style={styles.title}>{moduleCode}</Text>
         <Text style={styles.description}>{title}</Text>

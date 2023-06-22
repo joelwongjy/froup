@@ -1,29 +1,26 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Provider } from 'react-redux';
+import { getAllModulesSummary } from '@actions/modules.ts';
+import ModuleList from '@components/moduleList/ModuleList';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { Module } from '@typings/modules';
+import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 
-import { useAppDispatch } from 'app/hooks';
-import { store } from 'app/store';
-import ModuleList from 'components/moduleList/ModuleList';
-import { fetchAllModules } from 'reducers/modulesReducer';
-
 function HomeScreen() {
-  const dispatch = useAppDispatch();
+  const [modules, setModules] = useState<Module[]>([]);
   useEffect(() => {
-    const fetchModules = async () => {
-      dispatch(fetchAllModules());
-    };
-
-    fetchModules().catch();
-  }, [dispatch]);
+    getAllModulesSummary().then((modules) => {
+      setModules(modules.slice(1100, 1150));
+    }
+    );
+  }, []);
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ModuleList itemList={modules} />
+      <ModuleList modules={modules} />
     </View>
   );
 }
@@ -40,14 +37,12 @@ const Tab = createBottomTabNavigator();
 
 function App() {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen component={HomeScreen} name="Home" />
-          <Tab.Screen component={DetailsScreen} name="Details" />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </Provider>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen component={HomeScreen} name="Modules" />
+        <Tab.Screen component={DetailsScreen} name="Details" />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -60,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default registerRootComponent(App);

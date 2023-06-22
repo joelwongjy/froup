@@ -1,6 +1,10 @@
 import { FlatList, StyleSheet, View } from 'react-native';
+import ModuleListRow from '@components/moduleListRow/ModuleListRow';
+import { Module } from '@typings/modules';
 
-import ModuleListRow from 'components/moduleListRow/ModuleListRow';
+interface Props {
+  modules: Module[];
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -8,19 +12,27 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ModuleList({ itemList }) {
+const ModuleList = ({ modules }: Props) => {
+  const renderSeparator = () => (
+    <View
+      style={{
+        backgroundColor: '#DBDCDF',
+        height: 1,
+      }}
+    />
+  );
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={itemList}
+        ItemSeparatorComponent={renderSeparator}
+        data={modules}
         renderItem={({ item }) => (
-          <ModuleListRow
-            image_url={item.image_url}
-            moduleCode={item.moduleCode}
-            title={item.title}
-          />
+          <ModuleListRow moduleCode={item.moduleCode} title={item.title} />
         )}
       />
     </View>
   );
-}
+};
+
+export default ModuleList;

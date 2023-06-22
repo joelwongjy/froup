@@ -1,10 +1,10 @@
-import config from 'config/app.config.json';
+import holidays from '@data/holidays.json';
+import modRegData from '@data/modreg-schedule.json';
 import { format } from 'date-fns';
 import { mapValues } from 'lodash';
+import { AcadYear, Semester } from 'src/typings/modules';
 
-import holidays from 'data/holidays.json';
-import modRegData from 'data/modreg-schedule.json';
-import { AcadYear, Semester } from 'types/modules';
+import config from './app.config.json';
 
 export const regPeriods = [
   'Select Modules',

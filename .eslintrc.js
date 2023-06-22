@@ -42,7 +42,6 @@ module.exports = {
       },
     ],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-    '@typescript-eslint/explicit-function-return-type': 'error',
     '@typescript-eslint/no-empty-function': [
       'error',
       { allow: ['arrowFunctions'] },
@@ -117,7 +116,7 @@ module.exports = {
           ['^react', '^@?\\w'],
           // Internal packages.
           [
-            '^(app|assets|components|constants|contexts|data|lib|reducers|routes|sections|types|utils)(/.*|$)',
+            '^(app|assets|components|constants|contexts|data|lib|routes|sections|typings|utils)(/.*|$)',
           ],
           // Side effect imports.
           ['^\\u0000'],
