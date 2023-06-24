@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, View } from 'react-native';
-import ModuleListRow from '@components/moduleListRow/ModuleListRow';
+import ModuleListRow from '@components/moduleList/ModuleListRow';
 import { Module } from '@typings/modules';
 
 interface Props {
